@@ -19,35 +19,43 @@ app.get("/", (req, res) => {
 app.post('/auth', async (req, res) => {
 
 
-    var { username, password } = req.body;
+    var { email, password } = req.body;
 
     console.log("req.body", req.body);
 
-    if (typeof username !== "undefined" && username !== "" && typeof username !== null) { var username = username } else { return res.status(200).json({ status: 0, mesage: "userName Required" }) }
+    if (typeof email !== "undefined" && email !== "" && typeof email !== null) { var email = email } else { return res.status(200).json({ status: 0, mesage: "Email Required" }) }
 
     if (typeof password !== "undefined" && password !== "" && typeof password !== null) { var password = password } else { return res.status(200).json({ status: 0, mesage: "Password Required" }) }
 
 
-    if (username !== "test@gmail.com" && password !== "test") {
+    if (email !== "test@gmail.com" && password !== "test") {
 
-        return res.status(200).json({ status: 0, message: "Invalid UserName And Password" });
+        return res.status(200).json({ status: 0, message: "Invalid Email And Password" });
 
-    } else if (username == "test@gmail.com" && password !== "test") {
+    } else if (email == "test@gmail.com" && password !== "test") {
 
         return res.status(200).json({ status: 0, message: "Invalid Password" });
 
-    } else if (username !== "test@gmail.com" && password == "test") {
+    } else if (email !== "test@gmail.com" && password == "test") {
 
-        return res.status(200).json({ status: 0, message: "Invalid UserName" });
+        return res.status(200).json({ status: 0, message: "Invalid Email" });
 
-    } else if (username == "test@gmail.com" && password == "test") {
+    } else if (email == "test@gmail.com" && password == "test") {
 
 
-        const token = jwt.sign({ id: 1, name: "Star", username: username }, process.env.SECRET, { expiresIn: '1m' });
+        const token = jwt.sign({ id: 1, name: "User", email: email }, process.env.SECRET, { expiresIn: '1m' });
 
-        console.log("token", token)
+        // console.log("token", token)
 
-        return res.status(200).json({ status: 1, message: "Valid Credentials Is Success" });
+        return res.status(200).json(
+            {
+                status: 1,
+                message: "Login Succesfully",
+                data: {
+                    name: "User",
+                    token
+                }
+            });
 
     }
 
