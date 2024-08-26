@@ -1,12 +1,15 @@
 import Home from './components/Home';
 import './App.css';
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import Loginpage from './components/Loginpage';
 import ProductedRoute from './components/ProductedRoute';
-import AuthProvider from './components/utils/AuthProvider';
+import AuthProvider, { useAuth } from './components/utils/AuthProvider';
 
 function App() {
+
+  const auth = useAuth();
+  console.log("auth", auth)
   return (
     <>
 
@@ -24,6 +27,10 @@ function App() {
                 <Route path='/home' element={<Home />} />
 
               </Route>
+
+              {/* To Render Single Router Path */}
+
+              <Route path="*" element={<Navigate to={auth && auth.user ? '/home' : '/login'} />} />
 
             </Routes>
 
