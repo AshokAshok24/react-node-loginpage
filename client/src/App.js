@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Loginpage from './components/Loginpage';
 import ProductedRoute from './components/ProductedRoute';
 import AuthProvider, { useAuth } from './components/utils/AuthProvider';
+import Welcome from './components/Welcome';
 
 function App() {
 
@@ -25,6 +26,8 @@ function App() {
               <Route element={<ProductedRoute />}>
 
                 <Route path='/home' element={<Home />} />
+
+                <Route path='/welcome' element={<Welcome />} />
 
               </Route>
 
