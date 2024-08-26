@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../App.css"
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from './utils/AuthProvider'
+
+
 const Loginpage = () => {
 
     const auth = useAuth();
@@ -10,6 +12,12 @@ const Loginpage = () => {
         email: "",
         password: ""
     })
+
+
+    // If the user is already authenticated, redirect to the home page
+    if (auth && auth.user) {
+        return <Navigate to="/home" />;
+    }
 
     const handleChange = (e) => {
 
@@ -22,11 +30,8 @@ const Loginpage = () => {
 
     const handleSubmit = async () => {
 
-        console.log("inpits", inputs);
-
-
         auth.loginAction(inputs);
-        return
+        return;
 
     }
 
