@@ -38,28 +38,29 @@ const Loginpage = () => {
 
     return (
         <>
-            <div className="login-container">
 
-                <div className="wrapper">
+            <form className='login-container containe1r'>
 
-                    <div className='form-field'>
-                        <label htmlFor="email">Email</label>
-                        <input type="text" id='email' onChange={handleChange} />
+                <div className="wrapper row">
+
+                    <div className="col-12">
+
+                        <div class="form-group mb-3">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" onChange={handleChange} aria-describedby="emailHelp" />
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" onChange={handleChange} />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" onClick={handleSubmit} >Submit</button>
+
                     </div>
-
-                    <div className='form-field'>
-                        <label htmlFor='password'>Password</label>
-                        <input type="text" id='password' onChange={handleChange} />
-
-                    </div>
-
-                    <div className='form-field'>
-                        <button onClick={handleSubmit}>Submit</button>
-                    </div>
-
                 </div>
 
-            </div>
+            </form>
 
         </>
     )
