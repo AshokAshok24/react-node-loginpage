@@ -4,45 +4,20 @@
   box-sizing: border-box;
 }
 
-
 .login-container{
 
   height: 100vh;
-  background-color: aqua;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
 }
 
 .login-container .wrapper{
 
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-  height: 300px;
-  
-}
-
-.login-container .wrapper .form-field{
-
-  padding: 10px;
-  width: 100%;
-}
-
-.login-container .wrapper .form-field label{
-  
-  font-size: 16px;
-  font-weight: 600;
-  
-}
-.login-container .wrapper input{
-  padding: 8px;
-}
-
-.login-container .wrapper button{
-
-  width: 100%;
-  background-color: bisque;
-  padding: 8px;   
+  /* border: 1px solid black; */
+  padding: 90px;
+  border-radius: 10%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
