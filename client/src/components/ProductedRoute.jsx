@@ -6,9 +6,9 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 const ProductedRoute = () => {
 
-    const user = useAuth();
+    const auth = useAuth();
 
-    if (!user) return <Navigate to={'/login'} />
+    if (!auth && !auth.user) return <Navigate to={'/login'} />
 
     return <Outlet />
 
