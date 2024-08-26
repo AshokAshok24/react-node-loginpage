@@ -1,11 +1,14 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const app = express()
-
+const cors = require('cors')
 app.use(express.json())
 
 require('dotenv').config();
 
+app.use(cors({
+    origin: true
+}))
 
 
 
